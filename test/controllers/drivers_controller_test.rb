@@ -8,7 +8,7 @@ describe DriversController do
       # Arrange
       # Ensure that there is at least one Driver saved
       get "/drivers"
-      must_respond_with :uccess
+      must_respond_with :success
       # Act
 
       # Assert
