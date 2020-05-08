@@ -7,7 +7,8 @@ describe DriversController do
     it "responds with success when there are many drivers saved" do
       # Arrange
       # Ensure that there is at least one Driver saved
-
+      get "/drivers"
+      must_respond_with :uccess
       # Act
 
       # Assert
