@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <nav>
+    <ul>
+      <li> "Add Home Link" </li> 
+      <li> <%= link_to 'Drivers', drivers_path %> </li>
+      <li> <%= link_to 'Passengers', passengers_path %> </li>
+    </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>
