@@ -4,6 +4,6 @@
   <h1><%= @driver.vin %></h1>
    <br>
   <h1><%= @driver.available%></h1>
-  <%= "Edit"%>
-  <%= "Delete"%>
+  <%= link_to "Edit", edit_driver_path(@driver) %>
+  <%= link_to "Delete", driver_path(@driver), method: :delete, data: {confirm: "Are you sure?"}%>
 </div>
