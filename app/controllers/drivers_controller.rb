@@ -4,5 +4,10 @@ class DriversController < ApplicationController
     @drivers = Driver.all
   end
 
+  def show
+  end
+  
+
+
   
 end

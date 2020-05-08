@@ -1,3 +1,13 @@
-<%@drivers.each do |driver|%>
- <%=driver.name%>
-<%end%>
+
+<h1>Driver List</h1>
+<ul>
+  <%@drivers.each do |driver|%>
+   <li>
+    <%=driver.name%>
+    <%=driver.vin%>
+    <%=driver.available%>
+   </li>
+  <%end%>
+</ul>
+<%= "Add Driver" %>
+
