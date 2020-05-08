@@ -12,4 +12,6 @@ class PassengersController < ApplicationController
     end
   end
 
+  
+
 end

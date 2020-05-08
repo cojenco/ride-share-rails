@@ -1,4 +1,10 @@
 <div>
   <h3> <%= @passenger.name %> </h3>
   <p>  &#128222 <%= @passenger.phone_num %> </p>
+
+  <ul>
+    <li> <%= link_to 'Edit Passenger', edit_passenger_path %> </li>
+    <li> <%= link_to 'Delete Passenger', passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure?"} %> </li>
+    <li> <%= link_to 'Request New Trip', passengers_path %> </li>
+  </ul>
 </div>
