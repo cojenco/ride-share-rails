@@ -41,35 +41,6 @@ class TripsController < ApplicationController
     end
   end
 
-  def new
-    passenger_id = params[:passenger_id]
-    tips = rand(1..1000).to_f
-    @driver = Driver.where(available: true).first
-    
-    params_hash = {
-      passenger_id: passenger_id,
-      date: Date.new,
-      cost: tips,
-      rating: nil,
-      driver_id: @driver.id
-    }
-
-    @trip = Trip.new(params_hash)
-    if @trip.save
-      redirect_to trip_path(@trip.id)
-      @driver.update(available: false)
-      return
-    else
-      redirect_to passenger_path(passenger_id)
-      return
-    end
-  end
-
-  def create
-    Trip.create(trip_params)
-  end
-
-
   private
   def trip_params
     return params.require(:trip).permit(:date, :cost, :rating)
