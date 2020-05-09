@@ -5,6 +5,6 @@
   <ul>
     <li> <%= link_to 'Edit Passenger', edit_passenger_path %> </li>
     <li> <%= link_to 'Delete Passenger', passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure?"} %> </li>
-    <li> <%= link_to 'Request New Trip', passengers_path %> </li>
+    <li> <%= link_to 'Request New Trip', new_passenger_trip_path(@passenger.id) %> </li>
   </ul>
 </div>

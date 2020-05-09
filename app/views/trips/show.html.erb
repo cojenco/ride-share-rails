@@ -1,10 +1,15 @@
-<%= @trip.id %>
+TRIP# <%= @trip.id %>
    <br>
 <%= @trip.date %>
    <br>
-<%= @trip.passenger_id %>
+Cost: <%= @trip.cost %>
    <br>
-<%= @trip.driver_id %>
+Rating: <%= @trip.rating %>
+   <br> 
+Passenger ID: <%= @trip.passenger_id %>
+   <br>
+Driver ID: <%= @trip.driver_id %>
+   <br>
 
-<%= link_to "Delete", trip_path(@trip.id), method: :delete, data: {confirm: "Are you sure you want to delete trip Nr: #{@trip.id}?"} %>
+<%= link_to "Delete", trip_path(@trip.id), method: :delete, data: {confirm: "Are you sure you want to delete trip # #{@trip.id}?"} %>
 <%= link_to "Edit", edit_trip_path(@trip.id)%>
