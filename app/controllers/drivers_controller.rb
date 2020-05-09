@@ -16,8 +16,18 @@ class DriversController < ApplicationController
     @driver = Driver.new
   end
 
+
+  def driver_created
+    new_driver = driver_params
+    if new_driver[:available].nil?
+      new_driver[:available] = true
+    end
+
+    return new_driver
+  end
+
   def create
-    @driver = Driver.new(driver_params) 
+    @driver = Driver.new(driver_created) 
     if @driver.save 
       redirect_to drivers_path 
       return
