@@ -48,7 +48,7 @@ class TripsController < ApplicationController
     
     params_hash = {
       passenger_id: passenger_id,
-      date: Date.new,
+      date: Date.today,
       cost: tips,
       rating: nil,
       driver_id: @driver.id
@@ -63,10 +63,6 @@ class TripsController < ApplicationController
       redirect_to passenger_path(passenger_id)
       return
     end
-  end
-
-  def create
-    Trip.create(trip_params)
   end
 
 
