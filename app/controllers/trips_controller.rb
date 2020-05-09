@@ -65,6 +65,10 @@ class TripsController < ApplicationController
     end
   end
 
+  def create
+    Trip.create(trip_params)
+  end
+
 
   private
   def trip_params
