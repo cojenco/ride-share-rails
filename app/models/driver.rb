@@ -5,6 +5,7 @@ class Driver < ApplicationRecord
     valid_trips = self.trips.where.not(rating: nil)
     total_ratings = valid_trips.map {|trip| trip.rating}
     return "No Ratings" if total_ratings.empty?
+
     avg_rating = total_ratings.sum.to_f  / valid_trips.count
     return avg_rating.round(1)
   end
@@ -16,5 +17,4 @@ class Driver < ApplicationRecord
     total_earnings = (grand_total.sum - total_fees) * 0.8
     return total_earnings.round(2)
   end
-
 end
