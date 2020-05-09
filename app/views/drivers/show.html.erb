@@ -4,6 +4,8 @@
   Vin: <%= @driver.vin %>
    <br>
   Status: <%= @driver.available ? "Available" : "Unavailable" %>
+     <br>
+  Total Trips: <%= @driver.trips.count %>
    <br>
   Rating: <%= @driver.avg_rating %>
     <br>

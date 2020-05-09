@@ -1,6 +1,7 @@
 <div>
   <h3> <%= @passenger.name %> </h3>
   <p>  &#128222 <%= @passenger.phone_num %> </p>
+  <p> Total Charges: $<%= @passenger.total_charges %> </p>
 
   <ul>
     <li> <%= link_to 'Edit Passenger', edit_passenger_path %> </li>
