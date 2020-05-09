@@ -43,7 +43,7 @@ class TripsController < ApplicationController
 
   def new
     passenger_id = params[:passenger_id]
-    tips = rand(1..1000).to_f
+    tips = rand(10..1000).to_f
     @driver = Driver.where(available: true).first
     
     params_hash = {

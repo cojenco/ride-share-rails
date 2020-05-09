@@ -7,7 +7,7 @@
    <br>
   Rating: <%= @driver.avg_rating %>
     <br>
-  Cost
+  Total Earnings: $<%= @driver.total_earnings %>
       <br> 
     <%if @driver.available%>
   <button> <%= link_to 'Make Unavailable', make_available_path(@driver.id), method: :patch %></button>
