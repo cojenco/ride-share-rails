@@ -8,8 +8,12 @@
   Rating
     <br>
   Cost
-    <br>
-  <button>Button[Make Available/Unavailable] </button>
+      <br> 
+    <%if @driver.available%>
+  <button> <%= link_to 'Make Unavailable', make_available_path(@driver.id), method: :patch %></button>
+    <%else%>
+  <button> <%= link_to 'Make Available', make_available_path(@driver.id), method: :patch %></button>
+    <%end%>
       <br>
   <button><%= link_to "Edit Driver", edit_driver_path(@driver) %></button>
      <br>

@@ -15,4 +15,6 @@ Rails.application.routes.draw do
     resources :trips, only: [:index]
   end
 
+  patch "/driver/:id/make_available", to: "drivers#make_available", as: "make_available"
+
 end

@@ -71,6 +71,19 @@ class DriversController < ApplicationController
     end
   end
 
+
+  def make_available
+    @driver = Driver.find_by(id: params[:id])
+    if @driver[:available]
+      @driver.update(available: false)
+    else
+      @driver.update(available: true)
+    end
+
+    redirect_to driver_path(@driver.id)
+    return
+  end
+
   private
 
   def driver_params
