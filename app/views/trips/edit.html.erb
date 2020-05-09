@@ -8,7 +8,7 @@
   <%= f.text_field :cost %>
      <br>
   <%= f.label :rating %>
-  <%= f.text_field :rating %>
+  <%= f.select :rating, options_for_select([1,2,3,4,5]) %>
      <br>
   <%= f.submit "Edit" %>
 <% end %>
