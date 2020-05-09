@@ -16,8 +16,25 @@ class TripsController < ApplicationController
     end
   end
 
+  def update
+    @trip = Trip.find_by(id: params[:id])
+    if @trip.nil?
+      head :not_found
+      return
+    elsif @trip.update(trip_params)
+      redirect_to trip_path(@trip.id)
+      return
+    else
+      render :edit, :bad_request
+      return
+    end
+  end
 
 
 
 
+  private
+  def trip_params
+    return params.require(:trip).permit(:date, :cost, :rating)
+  end
 end
