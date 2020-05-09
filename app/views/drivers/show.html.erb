@@ -5,10 +5,15 @@
    <br>
   Status: <%= @driver.available ? "Available" : "Unavailable" %>
    <br>
-  Button[Make Available/Unavailable]
-   <br>
-  <%= link_to "Edit", edit_driver_path(@driver) %>
-  <%= link_to "Delete", driver_path(@driver), method: :delete, data: {confirm: "Are you sure?"}%>
+  Rating
+    <br>
+  Cost
+    <br>
+  <button>Button[Make Available/Unavailable] </button>
+      <br>
+  <button><%= link_to "Edit Driver", edit_driver_path(@driver) %></button>
+     <br>
+  <button><%= link_to "Delete Driver", driver_path(@driver), method: :delete, data: {confirm: "Are you sure?"}%> </button>
 
 
     <table>

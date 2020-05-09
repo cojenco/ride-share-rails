@@ -1,20 +1,5 @@
-
-<h1>Driver List</h1>
-<ul>
-  <%@drivers.each do |driver|%>
-   <li>
-    <%=driver.name%>
-    <%=driver.vin%>
-    <%=driver.available%>
-   </li>
-  <%end%>
-</ul>
-<%= "Add Driver" %>
-
-
-
 <h1>All Drivers </h1>
-<%= link_to ' + New Driver', new_driver_path %>
+<button><%= link_to ' + New Driver', new_driver_path %></button>
 <table>
   <tr>
     <th> ID </th>
