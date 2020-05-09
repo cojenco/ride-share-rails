@@ -11,3 +11,25 @@
 </ul>
 <%= "Add Driver" %>
 
+
+
+<h1>All Drivers </h1>
+<%= link_to ' + New Driver', new_driver_path %>
+<table>
+  <tr>
+    <th> ID </th>
+    <th> Name </th>
+    <th> Vin </th>
+    <th> Status</th>
+  </tr>
+
+  <%@drivers.each do |driver|%>
+    <tr>
+      <td> <%= driver.id %> </td>
+      <td> <%= link_to driver.name, driver_path(driver.id) %> </td>
+      <td> <%= driver.vin %> </td>
+      <td> <%= driver.available ? "Available" : "Unavailable" %> </td>
+    </tr>
+  <%end%>
+</table>
+
