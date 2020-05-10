@@ -17,10 +17,9 @@
 
 @import "**/*";
 
-// body {
-//   background-color: #3a3042;
-//   // background-color: rgb(21,25,25);
-// }
+body {
+  min-height: 100vh;
+}
 
 .layout-footer, .layout-nav {
   background-color: #3a3042;
@@ -28,14 +27,79 @@
   text-align: center;
 }
 
-.layout-nav ul li a {
-  color: black;
+.layout-footer {
+  color: goldenrod;
+  font-family: fantasy;
+  bottom: 0;
 }
 
-layout-nav ul li a:hover {
-  color: goldenrod;
-} 
 
 a:hover {
   color: goldenrod;
+}
+
+// drop-down menureference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover
+.dropbtn, .homebtn {
+  background-color: goldenrod;
+  border: goldenrod solid 0.2rem;
+  // color: #3a3042;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bolder;
+  width: 10rem;
+}
+.homebtn {
+  width: 25rem;
+  background-color: #3a3042;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0 1rem;
+  font-family: fantasy;
+}
+
+.homebtn a {
+  color: goldenrod;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 10rem;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 0.5rem;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color:goldenrod;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color:#3a3042;
+  color: goldenrod;
+}
+
+.dropdown:hover .homebtn {
+  background-color:#3a3042;
+  color: goldenrod;
+}
+
+.forms-style, .show-style {
+  min-height: 75vh;
 }

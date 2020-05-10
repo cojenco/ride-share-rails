@@ -1,19 +1,21 @@
-<% passenger = Passenger.find(@trip.passenger_id)%>
-<% driver = Driver.find(@trip.driver_id)%>
+<div class="show-style">
+  <% passenger = Passenger.find(@trip.passenger_id)%>
+  <% driver = Driver.find(@trip.driver_id)%>
 
-TRIP# <%= @trip.id %>
-   <br>
-<%= @trip.date %>
-   <br>
-Cost: <%= @trip.cost %>
-   <br>
-Rating: <%= @trip.rating %>
-   <br> 
-Passenger <%= link_to passenger.name, passenger_path(passenger.id) %>
-   <br>
-Driver <%= link_to driver.name, driver_path(driver.id) %>
-   <br>
-
-<button> <%= link_to "Delete Trip", trip_path(@trip.id), method: :delete, data: {confirm: "Are you sure you want to delete trip # #{@trip.id}?"} %> </button>
+  TRIP# <%= @trip.id %>
     <br>
-<button><%= link_to "Edit Trip", edit_trip_path(@trip.id)%></button>
+  <%= @trip.date %>
+    <br>
+  Cost: <%= @trip.cost %>
+    <br>
+  Rating: <%= @trip.rating %>
+    <br> 
+  Passenger <%= link_to passenger.name, passenger_path(passenger.id) %>
+    <br>
+  Driver <%= link_to driver.name, driver_path(driver.id) %>
+    <br>
+
+  <button> <%= link_to "Delete Trip", trip_path(@trip.id), method: :delete, data: {confirm: "Are you sure you want to delete trip # #{@trip.id}?"} %> </button>
+      <br>
+  <button><%= link_to "Edit Trip", edit_trip_path(@trip.id)%></button>
+</div>

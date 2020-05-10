@@ -2,11 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+a {
+  color: #3a3042;
+}
+
 .homepage-container {
   height: 100vh;
   background-color: rgb(21,25,25);
   color: whitesmoke;
-  padding: 2rem 5rem;
+  padding: 5rem 5rem 0 5rem;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 3fr;
@@ -36,13 +40,17 @@
 
 .homepage-slogan p {
   font-weight: bolder;
+  font-size: 1.1rem;
   color: goldenrod;
-  
+  font-family: fantasy;
 }
 
 
 .homepage-highlight {
-  color: #3a3042;
-  grid-column-start: 2;
+  color: #685974;
+  grid-column-start: 1;
+  grid-column-end: 3;
   grid-row-start: 2;
+  padding: 5rem 1rem;
+  font-family: fantasy;
 }
