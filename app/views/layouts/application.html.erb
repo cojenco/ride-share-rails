@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <nav>
+    <nav class="layout-nav">
     <ul>
       <li> <%= link_to 'Home', root_path %> </li> 
       <li> <%= link_to 'Drivers', drivers_path %> </li>
@@ -18,5 +18,8 @@
     </ul>
     </nav>
     <%= yield %>
+    <footer class="layout-footer">
+      Jetmire•Cathy © 2020
+    </footer>
   </body>
 </html>
