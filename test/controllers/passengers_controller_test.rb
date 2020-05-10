@@ -63,7 +63,7 @@ describe PassengersController do
       expect(Passenger.last.phone_num).must_equal passenger_hash[:passenger][:phone_num]
     end
 
-    it "does not create a driver if the form data violates Driver validations, and responds with a redirect" do
+    it "does not create a passenger if the form data violates Passenger validations, and responds with a redirect" do
       # Note: This will not pass until ActiveRecord Validations lesson
       # Arrange
       # Set up the form data so that it violates Driver validations
@@ -79,23 +79,19 @@ describe PassengersController do
   
 
   describe "edit" do
-   it "responds with success when getting the edit page for an existing, valid driver" do
-      # Arrange
-      # Ensure there is an existing driver saved
-
-      # Act
-
-      # Assert
+    before do
+      Passenger.create(name: "We're all wonders", phone_num: "9340983094")
     end
+   it "responds with success when getting the edit page for an existing, valid passenger" do
+      passenger = Passenger.first
+      get edit_passenger_path(passenger.id)
+      must_respond_with :success
+   end
 
-   it "responds with redirect when getting the edit page for a non-existing driver" do
-      # Arrange
-      # Ensure there is an invalid id that points to no driver
-
-      # Act
-
-      # Assert
-    end
+   it "responds with redirect when getting the edit page for a non-existing passenger" do
+      get edit_passenger_path(-1)
+      must_respond_with :not_found
+   end
   end
 
   
@@ -124,7 +120,7 @@ describe PassengersController do
       expect(passanger.phone_num).must_equal new_passenger_hash[:passenger][:phone_num]
     end
 
-    it "does not update any driver if given an invalid id, and responds with a 404" do
+    it "does not update any passenger if given an invalid id, and responds with a 404" do
       id = -1
       expect {
         patch passenger_path(id), params: new_passenger_hash
@@ -133,7 +129,7 @@ describe PassengersController do
       must_respond_with :not_found
     end
   
-    it "does not create a driver if the form data violates Driver validations, and responds with a redirect" do
+    it "does not create a passenger if the form data violates Passenger validations, and responds with a redirect" do
       # Note: This will not pass until ActiveRecord Validations lesson
       # Arrange
       # Ensure there is an existing driver saved
