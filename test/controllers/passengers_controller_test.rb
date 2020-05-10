@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe PassengersController do
+
   describe "index" do
     it "responds with success when there are many passenger saved" do
       get "/passengers"
@@ -12,6 +13,7 @@ describe PassengersController do
       must_respond_with :success
     end
   end
+
 
   describe "show" do
     before do
@@ -30,6 +32,7 @@ describe PassengersController do
       must_respond_with :not_found
     end
   end
+
 
   describe "new" do
     it "resonse with succes" do
@@ -75,7 +78,6 @@ describe PassengersController do
   end
   
 
-
   describe "edit" do
    it "responds with success when getting the edit page for an existing, valid driver" do
       # Arrange
@@ -96,6 +98,7 @@ describe PassengersController do
     end
   end
 
+  
   describe "update" do
     before do
       Passenger.create(name: "We're all wonders", phone_num: "9340983094")
@@ -147,28 +150,25 @@ describe PassengersController do
   end
   
   describe "destroy" do
-    it "destroys the driver instance in db when driver exists, then redirects" do
-      # Arrange
-      # Ensure there is an existing driver saved
-  
-      # Act-Assert
-      # Ensure that there is a change of -1 in Driver.count
-  
-      # Assert
-      # Check that the controller redirects
-  
+    before do
+      Passenger.create(name: "We're all wonders", phone_num: "9340983094")
+    end
+
+    it "destroys the passenger instance in db when passenger exists, then redirects" do
+      passanger = Passenger.first
+      expect {
+        delete passenger_path(passanger.id)
+      }.must_differ "Passenger.count", -1
+
+      must_redirect_to passengers_path
     end
   
-    it "does not change the db when the driver does not exist, then responds with " do
-      # Arrange
-      # Ensure there is an invalid id that points to no driver
-  
-      # Act-Assert
-      # Ensure that there is no change in Driver.count
-  
-      # Assert
-      # Check that the controller responds or redirects with whatever your group decides
-  
+    it "does not change the db when the passenger does not exist, then responds with " do
+      expect {
+        delete passenger_path(-1)
+      }.wont_change "Passenger.count"
+
+      must_respond_with :not_found
     end
   end
 end
