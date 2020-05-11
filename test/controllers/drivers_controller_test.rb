@@ -68,14 +68,33 @@ describe DriversController do
       must_redirect_to driver_path(Driver.last.id)
     end
 
-    it "does not create a driver if the form data violates Driver validations, and responds with a redirect" do
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!HAVE NOT DONE VALIDATION YET!!!!!!!!!!!!!!!!!"
-      # Note: This will not pass until ActiveRecord Validations lesson
-      # Set up the form data so that it violates Driver validations
 
-      # Ensure that there is no change in Driver.count
+    it "does not create a driver if vin is not present, and responds with a redirect" do
+      driver_hash1 = {
+        driver: {
+          name: "Drivers are all Wonderful!"
+        }
+      }
+ 
+      expect {
+        post drivers_path, params: driver_hash1
+      }.wont_change "Driver.count"
 
-      # Check that the controller redirects
+      assert_response :bad_request
+    end
+
+    it "does not create a driver if name is not present, and responds with a redirect" do
+      driver_hash2 = {
+        driver: {
+          vin: "12345678901234567"
+        }
+      }
+ 
+      expect {
+        post drivers_path, params: driver_hash2
+      }.wont_change "Driver.count"
+
+      assert_response :bad_request
     end
   end
   
@@ -124,19 +143,34 @@ describe DriversController do
       must_respond_with :not_found
     end
 
-    it "does not create a driver if the form data violates Driver validations, and responds with a redirect" do
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!HAVE NOT DONE VALIDATION YET!!!!!!!!!!!!!!!!!"
-      # Note: This will not pass until ActiveRecord Validations lesson
-      # Arrange
-      # Ensure there is an existing driver saved
-      # Assign the existing driver's id to a local variable
-      # Set up the form data so that it violates Driver validations
+    it "does not update a driver if name is not present, and responds with a redirect" do
+      @driver.save
+      edit_driver_hash = {
+        driver: {
+          name: "",
+        }
+      }
+      id = Driver.first.id
+      expect {
+        patch driver_path(id), params: edit_driver_hash
+      }.wont_change "Driver.count"
 
-      # Act-Assert
-      # Ensure that there is no change in Driver.count
+      assert_response :bad_request
+    end
 
-      # Assert
-      # Check that the controller redirects
+    it "does not update a driver if vin is not present, and responds with a redirect" do
+      @driver.save
+      edit_driver_hash = {
+        driver: {
+          vin: "",
+        }
+      }
+      id = Driver.first.id
+      expect {
+        patch driver_path(id), params: edit_driver_hash
+      }.wont_change "Driver.count"
+
+      assert_response :bad_request
     end
   end
 
