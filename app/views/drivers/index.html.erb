@@ -1,20 +1,21 @@
-<h1>All Drivers </h1>
-<button><%= link_to ' + New Driver', new_driver_path %></button>
-<table>
-  <tr>
-    <th> ID </th>
-    <th> Name </th>
-    <th> Vin </th>
-    <th> Status</th>
-  </tr>
-
-  <%@drivers.each do |driver|%>
+<div class="index-view">
+  <h1>All Drivers </h1>
+  <button class="index-newbtn"><%= link_to ' + New Driver', new_driver_path %></button>
+  <table>
     <tr>
-      <td> <%= driver.id %> </td>
-      <td> <%= link_to driver.name, driver_path(driver.id) %> </td>
-      <td> <%= driver.vin %> </td>
-      <td> <%= driver.available ? "Available" : "Unavailable" %> </td>
+      <th> ID </th>
+      <th> Name </th>
+      <th> Vin </th>
+      <th> Status</th>
     </tr>
-  <%end%>
-</table>
 
+    <%@drivers.each do |driver|%>
+      <tr>
+        <td> <%= driver.id %> </td>
+        <td> <%= link_to driver.name, driver_path(driver.id) %> </td>
+        <td> <%= driver.vin %> </td>
+        <td> <%= driver.available ? "Available" : "Unavailable" %> </td>
+      </tr>
+    <%end%>
+  </table>
+</div>

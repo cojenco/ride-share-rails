@@ -1,18 +1,20 @@
-<h1>All Passengers </h1>
-<button><%= link_to ' + New Passenger', new_passenger_path %></button>
+<div class="index-view">
+  <h1>All Passengers </h1>
+  <button class="index-newbtn"><%= link_to ' + New Passenger', new_passenger_path %></button>
 
-<table>
-  <tr>
-    <th> ID </th>
-    <th> Name </th>
-    <th> Phone Number </th>
-  </tr>
-
-  <%@passengers.each do |passenger|%>
+  <table>
     <tr>
-      <td> <%= passenger.id %> </td>
-      <td> <%= link_to passenger.name, passenger_path(passenger.id) %> </td>
-      <td> <%= passenger.phone_num %> </td>
+      <th> ID </th>
+      <th> Name </th>
+      <th> Phone Number </th>
     </tr>
-  <%end%>
-</table>
+
+    <%@passengers.each do |passenger|%>
+      <tr>
+        <td> <%= passenger.id %> </td>
+        <td> <%= link_to passenger.name, passenger_path(passenger.id) %> </td>
+        <td> <%= passenger.phone_num %> </td>
+      </tr>
+    <%end%>
+  </table>
+</div>
