@@ -19,19 +19,23 @@
 
 body {
   min-height: 100vh;
+  background-color: rgb(240, 239, 239);
 }
 
 .layout-footer, .layout-nav {
-  // background-color: #3a3042;
-  background-image: linear-gradient(to bottom, #3a3042, rgb(21,25,25));
   padding: 2rem;
   text-align: center;
 }
 
+.layout-nav {
+  background-color: black;
+  height: 30vh;
+  padding: 3rem 0 0 0;
+}
+
 .layout-footer {
-  background-image: linear-gradient(to top, #3a3042, rgb(21,25,25));
   color: goldenrod;
-  font-family: fantasy;
+  // font-family: fantasy;
   bottom: 0;
 }
 
@@ -49,22 +53,13 @@ a:hover {
   font-weight: bolder;
   width: 10rem;
 }
-.homebtn {
-  width: 25rem;
-  background-color: #3a3042;
-  border: none;
-  color: white;
-  font-size: 2rem;
-  padding: 0 1rem;
-  font-family: fantasy;
-}
+
 
 .homepage-logo {
   color: goldenrod;
   font-size: 2rem;
-  font-family: fantasy;
   font-weight: bold;
-  padding: 0 2rem;
+  padding: 0 10rem 0 1rem;
 }
 
 .homebtn a {
@@ -101,8 +96,7 @@ a:hover {
 }
 
 .dropdown:hover .dropbtn {
-  background-color:#3a3042;
-  color: goldenrod;
+  color: whitesmoke;
 }
 
 .dropdown:hover .homebtn {
@@ -133,4 +127,9 @@ th, td {
 
 .index-newbtn {
   background-color: goldenrod;
+}
+
+.nav-logo a:hover {
+  text-decoration: none;
+  color: whitesmoke;
 }
