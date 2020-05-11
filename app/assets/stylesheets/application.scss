@@ -17,25 +17,120 @@
 
 @import "**/*";
 
-// body {
-//   background-color: #3a3042;
-//   // background-color: rgb(21,25,25);
-// }
+body {
+  min-height: 100vh;
+}
 
 .layout-footer, .layout-nav {
-  background-color: #3a3042;
+  // background-color: #3a3042;
+  background-image: linear-gradient(to bottom, #3a3042, rgb(21,25,25));
   padding: 2rem;
   text-align: center;
 }
 
-.layout-nav ul li a {
-  color: black;
+.layout-footer {
+  background-image: linear-gradient(to top, #3a3042, rgb(21,25,25));
+  color: goldenrod;
+  font-family: fantasy;
+  bottom: 0;
 }
 
-layout-nav ul li a:hover {
-  color: goldenrod;
-} 
 
 a:hover {
+  color: rgb(102, 102, 173);
+}
+
+// drop-down menu reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover
+.dropbtn, .homebtn {
+  background-color: goldenrod;
+  border: goldenrod solid 0.2rem;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bolder;
+  width: 10rem;
+}
+.homebtn {
+  width: 25rem;
+  background-color: #3a3042;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0 1rem;
+  font-family: fantasy;
+}
+
+.homepage-logo {
   color: goldenrod;
+  font-size: 2rem;
+  font-family: fantasy;
+  font-weight: bold;
+  padding: 0 2rem;
+}
+
+.homebtn a {
+  color: goldenrod;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 10rem;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 0.5rem;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color:goldenrod;
+  color: whitesmoke;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color:#3a3042;
+  color: goldenrod;
+}
+
+.dropdown:hover .homebtn {
+  background-color:#3a3042;
+  color: goldenrod;
+}
+
+.forms-style, .show-style {
+  min-height: 75vh;
+}
+
+.index-view {
+  padding: 2rem 5rem;
+}
+
+table, th, td {
+  border: 0.2rem solid darkgray;
+}
+
+table {
+  width: 75%;
+  margin: 2rem 0;
+}
+
+th, td {
+  height: 2.5rem;
+}
+
+.index-newbtn {
+  background-color: goldenrod;
 }
