@@ -96,6 +96,21 @@ describe DriversController do
 
       assert_response :bad_request
     end
+
+    it "does not create a driver if vin is shorter than 17 chars, and responds with a redirect" do
+      driver_hash2 = {
+        driver: {
+          name: "Valid Name",
+          vin: "12345678",
+        }
+      }
+ 
+      expect {
+        post drivers_path, params: driver_hash2
+      }.wont_change "Driver.count"
+
+      assert_response :bad_request
+    end
   end
   
   describe "edit" do
@@ -168,6 +183,23 @@ describe DriversController do
       id = Driver.first.id
       expect {
         patch driver_path(id), params: edit_driver_hash
+      }.wont_change "Driver.count"
+
+      assert_response :bad_request
+    end
+
+    it "does not update a driver if vin is less than 17 chars, and responds with a redirect" do
+      @driver.save
+
+      driver_hash2 = {
+        driver: {
+          name: "Valid Name",
+          vin: "12345678",
+        }
+      }
+      id = Driver.first.id
+      expect {
+        patch driver_path(id), params: driver_hash2
       }.wont_change "Driver.count"
 
       assert_response :bad_request
