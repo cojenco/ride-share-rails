@@ -11,8 +11,11 @@
 
   <body>
     <nav class="layout-nav">
+      <div class="dropdown nav-logo">
+        <%= link_to 'Good Ride Good Life', root_path, class: "homepage-logo" %>
+      </div>
+
       <div class="dropdown">
-        
         <button class="dropbtn">Drivers</button>
         <div class="dropdown-content">
           <%= link_to 'All Drivers', drivers_path %> </li>
@@ -26,13 +29,11 @@
           <%= link_to 'Create Passenger', new_passenger_path %> </li>
         </div>
       </div>
-      <div class="dropdown">
-        <%= link_to 'Good Ride Good Life', root_path, class: "homepage-logo" %>
-      </div>
+
     </nav>
     <%= yield %>
     <footer class="layout-footer">
-      Jetmire • Cathy © 2020
+      Jetmire•Cathy © 2020
     </footer>
   </body>
 </html>
