@@ -1,5 +1,8 @@
 class Driver < ApplicationRecord
   has_many :trips
+  validates :name, presence: true
+  validates :vin, presence: true, length: {is: 17}, uniqueness: true
+  
 
   def avg_rating
     valid_trips = self.trips.where.not(rating: nil)

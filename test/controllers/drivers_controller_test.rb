@@ -4,14 +4,14 @@ describe DriversController do
   # Note: If any of these tests have names that conflict with either the requirements or your team's decisions, feel empowered to change the test names. For example, if a given test name says "responds with 404" but your team's decision is to respond with redirect, please change the test name.
 
   before do
-    @driver = Driver.new(name: "Lightning Mcqueen", vin: "LMCQ888SPEED888" )
+    @driver = Driver.new(name: "Lightning Mcqueen", vin: "12345678912345678")
   end
-
+  
   let (:driver_hash) {
     {
       driver: {
         name: "Speed", 
-        vin: "IMSPEEDLMCQ",
+        vin: "12345678912345678",
       }
     }
   }

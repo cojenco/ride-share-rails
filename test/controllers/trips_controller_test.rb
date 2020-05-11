@@ -2,8 +2,8 @@ require "test_helper"
 
 describe TripsController do
   before do
-    @passenger = Passenger.create(name: "Cathy")
-    @driver = Driver.create(name: "Jeta")
+    @passenger = Passenger.create(name: "Cathy", phone_num: 234598739248)
+    @driver = Driver.create(name: "Jeta",vin: "12345678912345678" )
     @trip = Trip.new(cost: 200, passenger_id: @passenger.id, driver_id: @driver.id)
   end
   let (:new_trip_hash) {

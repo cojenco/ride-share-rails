@@ -1,5 +1,7 @@
 class Passenger < ApplicationRecord
   has_many :trips
+  validates :name, presence: true
+  validates :phone_num, presence: true, uniqueness: true
 
   def total_charges
     valid_trips = self.trips.where.not(cost: nil)
