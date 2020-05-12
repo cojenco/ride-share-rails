@@ -4,7 +4,7 @@ describe DriversController do
   # Note: If any of these tests have names that conflict with either the requirements or your team's decisions, feel empowered to change the test names. For example, if a given test name says "responds with 404" but your team's decision is to respond with redirect, please change the test name.
 
   before do
-    @driver = Driver.new(name: "Lightning Mcqueen", vin: "12345678912345678")
+    @driver = Driver.new(name: "Lightning Mcqueen", vin: "12345678912345678", available: true)
   end
   
   let (:driver_hash) {
@@ -219,13 +219,31 @@ describe DriversController do
 
     it "does not change the db when the driver does not exist, then responds with " do
       @driver.save
-      # Ensure that there is no change in Driver.count
       expect {
         delete driver_path(-1)
       }.wont_change "Driver.count"
-
-      # Check that the controller responds or redirects with whatever your group decides
       must_respond_with :not_found
+    end
+  end
+
+  describe "make_available" do
+    it "make driver available if driver is unavailable" do
+      new_driver = Driver.create(name: "Lightning Mcqueen", vin: "12345678912345678", available: false)
+
+    
+      patch make_available_path(new_driver.id)
+      expect(Driver.last.available).must_equal true
+
+      must_redirect_to driver_path(new_driver.id)
+    end
+
+    it "make driver unavailable if driver is available" do
+      @driver.save
+
+      patch make_available_path(@driver.id)
+      expect(Driver.last.available).must_equal false
+
+      must_redirect_to driver_path(@driver.id)
     end
   end
 end
