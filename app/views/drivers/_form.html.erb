@@ -11,11 +11,11 @@
   <p>Please provide the following information to edit your driver in our database:</p>
 
 
-  <%= f.label :name %>
+  <%= f.label :name, class: 'required'%>
   <%= f.text_field :name %>
      <br>
-  <%= f.label :vin %>
-  <%= f.text_field :vin %>
+  <%= f.label :vin, class: 'required' %>
+  <%= f.text_field :vin, placeholder: "17 chars"%>
      <br>
   <%= f.submit "#{action_name} Driver", class:"show-btn" %>
 <% end %>

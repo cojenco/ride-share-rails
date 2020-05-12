@@ -8,11 +8,11 @@
 
 <%= form_with model: @passenger do |f|%>
   <div>
-    <%= f.label :name %>
+    <%= f.label :name, class: 'required' %>
     <%= f.text_field :name %>
   </div>
   <div>
-    <%= f.label :phone_num%>
+    <%= f.label :phone_num, class: 'required'%>
     <%= f.text_field :phone_num %>
   </div>
 

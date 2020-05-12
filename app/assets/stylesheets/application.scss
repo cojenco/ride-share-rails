@@ -156,3 +156,8 @@ td a {
   font-weight: normal;
   width: 15rem;
 }
+
+label.required:after {
+  content: " *";
+  color: red;
+}
