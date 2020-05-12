@@ -25,6 +25,7 @@ body {
 .layout-footer, .layout-nav {
   padding: 2rem;
   text-align: center;
+  // background-color: rgb(21,25,25);
 }
 
 .layout-nav {
@@ -45,7 +46,7 @@ a:hover {
 }
 
 // drop-down menu reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover
-.dropbtn, .homebtn {
+.dropbtn, .homebtn, .show-btn {
   background-color: goldenrod;
   border: goldenrod solid 0.2rem;
   padding: 1rem;
@@ -106,6 +107,7 @@ a:hover {
 
 .forms-style, .show-style {
   min-height: 75vh;
+  padding: 2rem 5rem;
 }
 
 .index-view {
@@ -113,16 +115,29 @@ a:hover {
 }
 
 table, th, td {
-  border: 0.2rem solid darkgray;
+  border: 0.1rem dotted darkgray;
 }
 
 table {
   width: 75%;
   margin: 2rem 0;
+  box-shadow: goldenrod 1rem 1rem;
+  // background-color: lightgray;
 }
 
 th, td {
   height: 2.5rem;
+}
+
+th {
+  background-color: gray;
+  color: whitesmoke;
+  text-align: center;
+}
+
+td a {
+  color: rgb(218, 131, 32);
+  font-weight: bold;
 }
 
 .index-newbtn {
@@ -132,4 +147,12 @@ th, td {
 .nav-logo a:hover {
   text-decoration: none;
   color: whitesmoke;
+}
+
+.show-btn {
+  padding: 0.2rem;
+  margin: 0.2rem;
+  font-size: 1rem;
+  font-weight: normal;
+  width: 15rem;
 }

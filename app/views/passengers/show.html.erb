@@ -1,29 +1,44 @@
 <div class="show-style">
-  <h3> <%= @passenger.name %> </h3>
+  <h1> <%= @passenger.name %> </h1>
   <p>  &#128222 <%= @passenger.phone_num %> </p>
   <p> Total Charges: $<%= @passenger.total_charges %> </p>
 
-  <ul>
-    <li> <%= link_to 'Edit Passenger', edit_passenger_path %> </li>
-    <li> <%= link_to 'Delete Passenger', passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure?"} %> </li>
-    <li> <%= link_to 'Request New Trip', new_passenger_trip_path(@passenger.id) %> </li>
-  </ul>
+  <% available_drivers = Driver.where(available: true) %> 
+  <% if available_drivers == [] %>
+    Sorry! There currently are no available drivers. Please try to request trip later.
+  <% else %>
+    <%= "Currently there are #{available_drivers.length} drivers available." %>
+  <% end %>
+    <br>
+  <button class="show-btn"> <%= link_to 'Request New Trip', passenger_trips_path(@passenger.id), method: :post %> </button>
+    <br>
+  <button class="show-btn"> <%= link_to 'Edit Passenger', edit_passenger_path %> </button>
+    <br>
+  <button class="show-btn"> <%= link_to 'Delete Passenger', passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure?"} %></button>
+    <br>
+  
 
-  <table>
-      <tr>
-        <th> Trip ID </th>
-        <th> Date </th>
-        <th> Driver Name </th>
-        <th> Passenger Name </th>
-      </tr>
-    <% @passenger.trips.each do |trip| %>
-      <% driver = (Driver.find(trip.driver_id)) %>
-      <tr>
-        <td> <%= link_to "Trip##{trip.id}", trip_path(trip.id) %> </td>
-        <td> <%= trip.date %> </td>
-        <td> <%= link_to driver.name, driver_path(driver.id) %> </td>
-        <td> <%= link_to @passenger.name, passenger_path(@passenger.id) %> </td>
-      </tr>
-    <% end %>
-  </table>
+  <% if @passenger.trips.count > 0 %>
+    <table>
+        <tr>
+          <th> Trip ID </th>
+          <th> Date </th>
+          <th> Driver Name </th>
+          <th> Passenger Name </th>
+        </tr>
+      <% @passenger.trips.each do |trip| %>
+        <% driver = (Driver.find_by(id: trip.driver_id)) %>
+        <% if !driver.nil? %>
+        <tr>
+          <td> <%= link_to "Trip##{trip.id}", trip_path(trip.id) %> </td>
+          <td> <%= trip.date %> </td>
+          <td> <%= link_to driver.name, driver_path(driver.id) %> </td>
+          <td> <%= link_to @passenger.name, passenger_path(@passenger.id) %> </td>
+        </tr>
+        <% end %>
+      <% end %>
+    </table>
+  <% else %>
+    <p><strong> <%= "#{@passenger.name} currently has no trips." %> </strong></p>
+  <% end %>
 </div>

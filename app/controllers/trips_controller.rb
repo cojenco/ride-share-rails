@@ -41,15 +41,20 @@ class TripsController < ApplicationController
     end
   end
 
-  def new
+  def create
     passenger_id = params[:passenger_id]
-    tips = rand(10..1000).to_f
+    rand_cost = rand(10..1000).to_f
     @driver = Driver.where(available: true).first
+
+    if @driver.nil?
+      redirect_to passenger_path(passenger_id)
+      return
+    end
     
     params_hash = {
       passenger_id: passenger_id,
       date: Date.today,
-      cost: tips,
+      cost: rand_cost,
       rating: nil,
       driver_id: @driver.id
     }

@@ -2,18 +2,15 @@ require "test_helper"
 
 describe TripsController do
   before do
-    @passenger = Passenger.create(name: "Cathy", phone_num: 234598739248)
-    @driver = Driver.create(name: "Jeta",vin: "12345678912345678" )
-    @trip = Trip.new(cost: 200, passenger_id: @passenger.id, driver_id: @driver.id)
+    @passenger = Passenger.create(name: "Cathy", phone_num: "234598739248")
+    @driver = Driver.create(name: "Jeta",vin: "12345678912345678", available: true)
+    @trip = Trip.new(passenger_id: @passenger.id, driver_id: @driver.id)
   end
   let (:new_trip_hash) {
     {
       trip: {
-        date: "date",
         passenger_id: @passenger.id,
         driver_id: @driver.id,
-        cost: 200.0,
-        rating: 3,
       },
     }
   }
@@ -33,10 +30,12 @@ describe TripsController do
 
 
   describe "create" do
-    it "can create a new trip with valid information accurately, and redirect" do
-    end
-
-    it "does not create a trip if the form data violates Trip validations, and responds with a redirect" do
+    it "can create a new trip with valid information accurately, and redirect" do      
+      expect {
+        post passenger_trips_path(@passenger.id)
+      }.must_differ "Trip.count", 1
+  
+      must_redirect_to trip_path(Trip.last.id)
     end
   end
 
@@ -79,10 +78,6 @@ describe TripsController do
       }.wont_change "Trip.count"
 
       must_respond_with :not_found
-    end
-
-    it "does not update a trip if the form data violates Trip validations, and responds with a redirect" do
-
     end
   end
 

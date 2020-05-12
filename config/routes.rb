@@ -5,10 +5,10 @@ Rails.application.routes.draw do
 
   # resources :passengers
   # resources :drivers
-  resources :trips, except: [:new, :index]
+  resources :trips, except: [:new, :index, :create]
 
   resources :passengers do
-    resources :trips, only: [:index, :new]
+    resources :trips, only: [:index, :create]
   end
 
   resources :drivers do

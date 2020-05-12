@@ -12,14 +12,14 @@
   Total Earnings: $<%= @driver.total_earnings %>
       <br> 
     <%if @driver.available%>
-  <button> <%= link_to 'Make Unavailable', make_available_path(@driver.id), method: :patch %></button>
+  <button class="show-btn"> <%= link_to 'Make Unavailable', make_available_path(@driver.id), method: :patch %></button>
     <%else%>
-  <button> <%= link_to 'Make Available', make_available_path(@driver.id), method: :patch %></button>
+  <button class="show-btn"> <%= link_to 'Make Available', make_available_path(@driver.id), method: :patch %></button>
     <%end%>
       <br>
-  <button><%= link_to "Edit Driver", edit_driver_path(@driver) %></button>
+  <button class="show-btn"><%= link_to "Edit Driver", edit_driver_path(@driver) %></button>
      <br>
-  <button><%= link_to "Delete Driver", driver_path(@driver), method: :delete, data: {confirm: "Are you sure?"}%> </button>
+  <button class="show-btn"><%= link_to "Delete Driver", driver_path(@driver), method: :delete, data: {confirm: "Are you sure?"}%> </button>
 
   <% if @driver.trips.count > 0 %>
     <table>
@@ -31,13 +31,15 @@
       </tr>
 
       <% @driver.trips.each do |trip| %>
-        <% passenger = (Passenger.find(trip.passenger_id)) %>
-        <tr>
-          <td> <%= link_to "Trip##{trip.id}", trip_path(trip.id) %> </td>
-          <td> <%= trip.date %> </td>
-          <td> <%= link_to @driver.name, driver_path(@driver.id) %> </td>
-          <td> <%= link_to passenger.name, passenger_path(passenger.id) %> </td>
-        </tr>
+        <% passenger = (Passenger.find_by(id: trip.passenger_id)) %>
+        <% if !passenger.nil? %>
+          <tr>
+            <td> <%= link_to "Trip##{trip.id}", trip_path(trip.id) %> </td>
+            <td> <%= trip.date %> </td>
+            <td> <%= link_to @driver.name, driver_path(@driver.id) %> </td>
+            <td> <%= link_to passenger.name, passenger_path(passenger.id) %> </td>
+          </tr>
+        <% end %>
       <% end %>
     </table>
   <% else %>
