@@ -59,22 +59,25 @@ describe Driver do
 
   # Tests for methods you create should go here
   describe "custom methods" do
-    describe "average rating" do
-      # Your code here
+    before do
+      new_driver.save
+      new_passenger = Passenger.create!(name: "PassengerWinkWink", phone_num: "1234567890")
+      @trip1 = Trip.create!(passenger_id: new_passenger.id, driver_id: new_driver.id, cost: 10, rating: 5)
+      @trip2 = Trip.create!(passenger_id: new_passenger.id, driver_id: new_driver.id, cost: 50, rating: 4)
     end
-
+    
     describe "total earnings" do
-      # Your code here
+      it "returns the total earnings of all the driver's trips" do
+        costs = ((@trip1.cost + @trip2.cost) - 1.65 * 2) * 0.8
+        expect(new_driver.total_earnings).must_equal costs.round(2)
+      end
     end
 
-    describe "can go online" do
-      # Your code here
+    describe "average rating" do
+      it "returns the correct average rating for the driver" do
+        ratings = (@trip1.rating.to_f + @trip2.rating.to_f) / 2
+        expect(new_driver.avg_rating).must_equal ratings.round(1)
+      end
     end
-
-    describe "can go offline" do
-      # Your code here
-    end
-
-    # You may have additional methods to test
   end
 end

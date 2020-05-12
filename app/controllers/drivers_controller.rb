@@ -16,7 +16,7 @@ class DriversController < ApplicationController
     @driver = Driver.new
   end
 
-
+  # this method makes the driver default to available (true)
   def driver_created
     new_driver = driver_params
     if new_driver[:available].nil?
