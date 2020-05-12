@@ -15,6 +15,17 @@ class TripsController < ApplicationController
       return
     end
   end
+  
+  #this method will make driver avalable after trip is complete
+  def trip_complete
+    @trip = Trip.find_by(id: params[:id])
+    @driver = Driver.find_by(id: @trip.driver_id)
+    if trip_params[:rating] != nil
+      @driver[:available] = true
+      @driver.save
+    end
+  end
+
 
   def update
     @trip = Trip.find_by(id: params[:id])
@@ -22,6 +33,7 @@ class TripsController < ApplicationController
       head :not_found
       return
     elsif @trip.update(trip_params)
+      trip_complete
       redirect_to trip_path(@trip.id)
       return
     else

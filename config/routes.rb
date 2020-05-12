@@ -5,15 +5,13 @@ Rails.application.routes.draw do
 
   # resources :passengers
   # resources :drivers
-  resources :trips, except: [:new, :index, :create]
+  resources :trips, only: [:edit, :update, :show, :destroy]
 
   resources :passengers do
-    resources :trips, only: [:index, :create]
+    resources :trips, only: [:create]
   end
 
-  resources :drivers do
-    resources :trips, only: [:index]
-  end
+  resources :drivers 
 
   patch "/driver/:id/make_available", to: "drivers#make_available", as: "make_available"
 

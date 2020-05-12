@@ -14,7 +14,7 @@
     <br>
   <button class="show-btn"> <%= link_to 'Edit Passenger', edit_passenger_path %> </button>
     <br>
-  <button class="show-btn"> <%= link_to 'Delete Passenger', passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure?"} %></button>
+  <button class="show-btn"> <%= link_to 'Delete Passenger', passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure you want to delete passenger: #{@passenger.name}?"} %></button>
     <br>
   
 
@@ -26,7 +26,7 @@
           <th> Driver Name </th>
           <th> Passenger Name </th>
         </tr>
-      <% @passenger.trips.each do |trip| %>
+      <% @passenger.trips.order(date: :desc).each do |trip| %>
         <% driver = (Driver.find_by(id: trip.driver_id)) %>
         <% if !driver.nil? %>
         <tr>

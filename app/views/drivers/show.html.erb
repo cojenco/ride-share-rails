@@ -17,10 +17,10 @@
   <button class="show-btn"> <%= link_to 'Make Available', make_available_path(@driver.id), method: :patch %></button>
     <%end%>
       <br>
-  <button class="show-btn"><%= link_to "Edit Driver", edit_driver_path(@driver) %></button>
+  <button class="show-btn"><%= link_to "Edit Driver", edit_driver_path(@driver.id) %></button>
      <br>
-  <button class="show-btn"><%= link_to "Delete Driver", driver_path(@driver), method: :delete, data: {confirm: "Are you sure?"}%> </button>
-
+  <button class="show-btn"><%= link_to "Delete Driver", driver_path(@driver.id), method: :delete, data: {confirm: "Are you sure you want to delete driver: #{@driver.name}?"}%> </button>
+  
   <% if @driver.trips.count > 0 %>
     <table>
       <tr>
@@ -29,8 +29,8 @@
         <th> Driver Name </th>
         <th> Passenger Name </th>
       </tr>
-
-      <% @driver.trips.each do |trip| %>
+ 
+      <% @driver.trips.order(date: :desc).each do |trip| %>
         <% passenger = (Passenger.find_by(id: trip.passenger_id)) %>
         <% if !passenger.nil? %>
           <tr>
