@@ -157,7 +157,7 @@ td a {
   width: 15rem;
 }
 
-.required{
-  content:" *";
-  color: red;
+form label.required:after{
+    color: red;
+    content: " *";
 }
