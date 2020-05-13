@@ -8,78 +8,12 @@ a {
 
 .homepage-container {
   height: 100vh;
-  // background-color: rgb(21,25,25);
   color: whitesmoke;
-  padding: 3rem 1rem 0 8rem;
   display: grid;
-  grid-template-rows: 1fr 1fr 0.5fr;
-  grid-template-columns: 1fr 1.5fr 3fr;
-}
-
-.tiny-img, .hp-img {
-  height: 100%;
-  width: 100%;
-  border: rgb(21,25,25) solid 0.2rem;
-  border-radius: 50%;
-  grid-column-start: 1;
-  grid-row-start: 1;
-  // grid-row-end: 4;
-}
-
-.hp-img {
-  grid-column-start: 2;
-  grid-row-start: 1;
-}
-.homepage-right {
-  grid-column-start: 3;
-  grid-row-start: 1;
-  grid-row-end: 4;
-  // background-color: rgb(21,25,25);
-
+  grid-template-columns: 1fr 1fr;
 }
 
 .homepage-img {
-  height: 50%;
-  width: 40vw;
-  border: rgb(21,25,25) solid 0.2rem;
-  border-radius: 10%;
-  // grid-column-start: 3;
-  // grid-row-start: 1;
-  // grid-row-end: 4;
-}
-
-.homepage-slogan, .homepage-circle {
-  // border: goldenrod double 0.2rem;
-  border: black double 0.2rem;
-  border-radius: 50%;
-  background-color:black;
-  width: 12rem;
-  height: 12rem;
-  padding: 2rem;
-  text-align: center;
-  grid-column-start: 2;
-  grid-row-start: 1;
-}
-.homepage-circle {
-  grid-column-start: 1;
-  grid-row-start: 3;
-}
-
-.homepage-slogan p {
-  font-family: fantasy;
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: goldenrod;
-  padding: 0.5rem 0 0 0;
-}
-
-.homepage-highlight {
-  color: goldenrod;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 2;
-  padding: 5rem 1rem;
-  font-family: fantasy;
-  font-size: 1.2rem;
-  font-weight: bold;
+  height: 120vh;
+  width: 50vw;
 }
