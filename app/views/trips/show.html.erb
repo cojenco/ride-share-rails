@@ -2,17 +2,17 @@
   <% passenger = Passenger.find(@trip.passenger_id)%>
   <% driver = Driver.find(@trip.driver_id)%>
 
-  TRIP# <%= @trip.id %>
+  <strong>TRIP# </strong><%= @trip.id %>
     <br>
-  <%= @trip.date %>
+  <strong>Date: </strong><%= @trip.date %>
     <br>
-  Cost: <%= @trip.cost %>
+  <strong>Cost: </strong>💲<%= @trip.cost %>
     <br>
-  Rating: <%= @trip.rating %>
+  <strong>Rating: </strong><%= @trip.rating %>
     <br> 
-  Passenger <%= link_to passenger.name, passenger_path(passenger.id) %>
+  <strong>Passenger: </strong><%= link_to passenger.name, passenger_path(passenger.id) %>
     <br>
-  Driver <%= link_to driver.name, driver_path(driver.id) %>
+  <strong>Driver: </strong><%= link_to driver.name, driver_path(driver.id) %>
     <br>
 
   <button class="show-btn"> <%= link_to "Delete Trip", trip_path(@trip.id), method: :delete, data: {confirm: "Are you sure you want to delete trip # #{@trip.id}?"} %> </button>

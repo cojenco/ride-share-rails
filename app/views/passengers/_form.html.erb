@@ -7,6 +7,7 @@
 <%end%>
 
 <%= form_with model: @passenger do |f|%>
+<p>Please provide the following information:</p>
   <div>
     <%= f.label :name, class: 'required' %>
     <%= f.text_field :name %>

@@ -32,7 +32,7 @@
     </nav>
     <section>
     <%flash.each do |name, message|%>
-       <div><%=message%></div>
+      <div class = "warning_message">🛑<%=message%></div>
     <%end%>
     </section>
     <%= yield %>
