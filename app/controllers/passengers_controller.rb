@@ -1,6 +1,6 @@
 class PassengersController < ApplicationController
   def index
-    @passengers = Passenger.all.order(:id)
+    @passengers = Passenger.all
   end
 
   def show
@@ -20,9 +20,11 @@ class PassengersController < ApplicationController
     @passenger = Passenger.new(passenger_params)
 
     if @passenger.save
+      flash[:success] = "#{@passenger.name.capitalize} was successfully added!"
       redirect_to passenger_path(@passenger.id)
       return
     else
+      flash.now[:error] = "#{@passenger.name.capitalize} was NOT successfully added!"
       render :new, status: :bad_request
       return
     end

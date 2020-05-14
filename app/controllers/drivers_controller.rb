@@ -1,7 +1,7 @@
 class DriversController < ApplicationController
 
   def index
-    @drivers = Driver.all.order(:id)
+    @drivers = Driver.all
   end
 
   def show
@@ -29,9 +29,11 @@ class DriversController < ApplicationController
   def create
     @driver = Driver.new(driver_created) 
     if @driver.save 
+      flash[:success] = "#{@driver.name.capitalize} was successfully added!"
       redirect_to driver_path(@driver.id) 
       return
-    else 
+    else
+      flash.now[:error] = "#{@driver.name.capitalize} was NOT successfully added!"
       render :new, status: :bad_request
       return
     end

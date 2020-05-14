@@ -29,8 +29,12 @@
           <%= link_to 'Create Passenger', new_passenger_path %> </li>
         </div>
       </div>
-
     </nav>
+    <section>
+    <%flash.each do |name, message|%>
+       <div><%=message%></div>
+    <%end%>
+    </section>
     <%= yield %>
     <footer class="layout-footer">
       Jetmire•Cathy © 2020
