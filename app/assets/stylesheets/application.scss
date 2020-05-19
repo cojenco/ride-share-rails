@@ -30,7 +30,7 @@ body {
 .layout-nav {
   background-color: rgb(65, 78, 78);
   height: 12vh;
-  padding: 3rem 0 0 0;
+  padding: 1rem 0 0 0;
   
 }
 
@@ -49,7 +49,7 @@ a:hover {
 .dropbtn, .homebtn, .show-btn {
   background-color: goldenrod;
   border: goldenrod solid 0.2rem;
-  padding: 1rem;
+  padding: 0.5rem;
   font-size: 1rem;
   font-weight: bolder;
   width: 10rem;
@@ -59,7 +59,7 @@ a:hover {
   color: goldenrod;
   font-size: 2rem;
   font-weight: bold;
-  margin: 0 53rem 0 1rem;
+  margin: 0 45vw 0 1rem;
 }
 
 .homebtn a {
